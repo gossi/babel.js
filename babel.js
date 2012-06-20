@@ -32,7 +32,7 @@ var babel = (function (window, document) {
 	};
 	
 	var babel = {
-		init : function(options) {
+		config : function(options) {
 			Object.keys(options).forEach(function (key) {
 				config[key] = options[key];
 			});

@@ -15,7 +15,8 @@ API
 ---
 
 
-	babel.init({
+	babel.config({
+		lang: "en", // default language
 		dir: "lang", // the directory of the language files
 		extension: "json" // extension of the language files
 	})
@@ -38,5 +39,6 @@ Language files are simple JSON files:
 How it works
 ------------
 
+`babel.activate()` with the default language is run on DOMContentLoaded.
 `babel.activate()` works as follows: For each key in the 
 json: `document.getElementById(key).innerHTML = value`
