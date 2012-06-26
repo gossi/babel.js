@@ -1,4 +1,5 @@
 {
+	"name": "Horst",
 	"heading": "Heading",
-	"intro": "Introduction text"
+	"intro": "Introduction text for {name}"
 }

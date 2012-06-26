@@ -1,3 +1,19 @@
+/*
+ * String supplant
+ * By Douglas Crockford
+ * http://javascript.crockford.com/remedial.html
+ */
+if (!String.prototype.supplant) {
+	String.prototype.supplant = function (o) {
+		return this.replace(/{([^{}]*)}/g,
+			function (a, b) {
+				var r = o[b];
+				return typeof r === 'string' || typeof r === 'number' ? r : a;
+			}
+		);
+	};
+}
+
 var babel = (function (window, document) {
 
 	var config = {
@@ -27,7 +43,10 @@ var babel = (function (window, document) {
 	
 	var replace = function(lang) {
 		Object.keys(loaded[lang]).forEach(function (key) {
-			document.getElementById(key).innerHTML = loaded[lang][key]; 
+			var node = document.getElementById(key);
+			if (node) {
+				node.innerHTML = loaded[lang][key].supplant(loaded[lang]);
+			}
 		});
 	};
 	
